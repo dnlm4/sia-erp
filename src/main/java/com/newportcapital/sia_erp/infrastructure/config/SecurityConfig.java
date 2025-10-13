@@ -1,5 +1,6 @@
 package com.newportcapital.sia_erp.infrastructure.config;
 
+import com.newportcapital.sia_erp.domain.repository.UserRepository;
 import com.newportcapital.sia_erp.infrastructure.security.JwtTokenFilter;
 import com.newportcapital.sia_erp.infrastructure.security.JwtTokenProvider;
 import org.springframework.context.annotation.Bean;
@@ -17,23 +18,28 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class SecurityConfig {
     private final JwtTokenProvider jwtTokenProvider;
+    private final UserRepository userRepository;
 
-    public SecurityConfig(JwtTokenProvider jwtTokenProvider) {
+    public SecurityConfig(JwtTokenProvider jwtTokenProvider, UserRepository userRepository) {
         this.jwtTokenProvider = jwtTokenProvider;
+        this.userRepository = userRepository;
     }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        JwtTokenFilter jwtTokenFilter = new JwtTokenFilter(jwtTokenProvider);
+        System.out.println("filterChain");
+        JwtTokenFilter jwtTokenFilter = new JwtTokenFilter(jwtTokenProvider,userRepository);
 
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/auth/**").permitAll()
+                .authorizeHttpRequests(auths -> auths
+                        .requestMatchers("/auth/**",
+                                "/swagger-ui/**",
+                                "/swagger-ui.html",
+                                "/v3/api-docs/**").permitAll()
                         .anyRequest().authenticated()
                 )
-                .httpBasic(Customizer.withDefaults())
                 .addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();

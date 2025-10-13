@@ -1,6 +1,6 @@
 package com.newportcapital.sia_erp.infrastructure.user.input.rest;
 
-import com.newportcapital.sia_erp.application.authentication.dto.LoginResponse;
+import com.newportcapital.sia_erp.adapter.web.authentication.dto.LoginResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

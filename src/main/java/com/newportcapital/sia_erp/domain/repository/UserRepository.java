@@ -7,5 +7,6 @@ import java.util.Optional;
 
 public interface UserRepository {
     UserEntity findByUsername(String user);
+    UserEntity findById(Integer id);
 
 }

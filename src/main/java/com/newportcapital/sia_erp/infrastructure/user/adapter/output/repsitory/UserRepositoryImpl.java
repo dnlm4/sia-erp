@@ -18,8 +18,13 @@ public class UserRepositoryImpl implements UserRepository {
     }
     @Override
     public UserEntity findByUsername(String user) {
-        UserEntity userEntity= userJpaRepository.findByUser(user)
+        return userJpaRepository.findByUser(user)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
-        return userEntity;
+    }
+
+    @Override
+    public UserEntity findById(Integer id) {
+        return userJpaRepository.findById(Long.valueOf(id))
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
     }
 }

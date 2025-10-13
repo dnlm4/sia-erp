@@ -26,9 +26,9 @@ public class UserEntity {
     @Column(name = "nombre")
     private String name;
     @Column(name = "apellido_paterno")
-    private String paternal_surname;
+    private String paternalSurname;
     @Column(name = "apellido_materno")
-    private String maternal_surname;
+    private String maternalSurname;
     @Column(name = "correo")
     private String email;
     @Column(name = "estado")
@@ -68,6 +68,44 @@ public class UserEntity {
     private String canDispatch;
     @Column(name = "revision_fisica")
     private String equipmentReview;
+
+    public String getPaternalSurnameOrDefault() {
+        return paternalSurname != null ? paternalSurname : "";
+    }
+    public String getMaternalSurnameOrDefault() {
+        return maternalSurname != null ? maternalSurname : "";
+    }
+    public String getEmailOrDefault() {
+        return email != null ? email : "";
+    }
+
+    public Integer getRoleIdOrDefault() {
+        return role != null ? role.getId() : 0;
+    }
+    public Integer getDepartmentIdOrDefault() {
+        return department != null ? department.getId() : 0;
+    }
+    public Integer getPlaceIdOrDefault() {
+        return place != null ? place.getId() : 0;
+    }
+    public String getReceiveValidationOrDefault() {
+        return receiveValidation != null ? receiveValidation : "";
+    }
+    public String getReceiveCreationOrDefault() {
+        return receiveCreation != null ? receiveCreation : "";
+    }
+    public String getReceiveApproval1OrDefault() {
+        return receiveApproval1 != null ? receiveApproval1 : "";
+    }
+    public String getReceiveApproval2OrDefault() {
+        return receiveApproval2 != null ? receiveApproval2 : "";
+    }
+    public String getReceiveSalesValidationOrDefault() {
+        return receiveSalesValidation != null ? receiveSalesValidation : "";
+    }
+    public String getReceiveSecuritySaleOrDefault() {
+        return receiveSecuritySale != null ? receiveSecuritySale : "";
+    }
 
 
 }

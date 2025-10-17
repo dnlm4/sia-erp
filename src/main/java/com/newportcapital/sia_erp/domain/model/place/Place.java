@@ -14,4 +14,20 @@ public class Place {
         this.shortName = shortName;
         this.company = company;
     }
+
+    public PlaceId getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getShortName() {
+        return shortName;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
 }

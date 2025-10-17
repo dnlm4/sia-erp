@@ -4,15 +4,15 @@ import com.newportcapital.sia_erp.domain.model.department.Department;
 import com.newportcapital.sia_erp.domain.model.place.Place;
 import com.newportcapital.sia_erp.domain.model.rol.Role;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class User {
     private UserId id;
     private String user;
     private String password;
     private String name;
-    private String paternal_surname;
-    private String maternal_surname;
+    private String paternalSurname;
+    private String maternalSurname;
     private String email;
     private String status;
     private Role role;
@@ -24,24 +24,23 @@ public class User {
     private String receiveApproval2;
     private String receiveSalesValidation;
     private String receiveSecuritySale;
-    private LocalDate creationDate;
-    private LocalDate editionDate;
+    private LocalDateTime creationDate;
+    private LocalDateTime editionDate;
     private Integer creatorUserId;
     private Integer editorUserId;
     private Integer areaPlantaId;
     private String canDispatch;
     private String equipmentReview;
 
-    public User() {
-    }
 
-    public User(UserId id, String user, String password, String name, String paternal_surname, String maternal_surname, String email, String status, Role role, Department department, Place place, String receiveValidation, String receiveCreation, String receiveApproval1, String receiveApproval2, String receiveSalesValidation, String receiveSecuritySale, LocalDate creationDate, LocalDate editionDate, Integer creatorUserId, Integer editorUserId, Integer areaPlantaId, String canDispatch, String equipmentReview) {
+
+    public User(UserId id, String user, String password, String name, String paternalSurname, String maternalSurname, String email, String status, Role role, Department department, Place place, String receiveValidation, String receiveCreation, String receiveApproval1, String receiveApproval2, String receiveSalesValidation, String receiveSecuritySale, LocalDateTime creationDate, LocalDateTime editionDate, Integer creatorUserId, Integer editorUserId, Integer areaPlantaId, String canDispatch, String equipmentReview) {
         this.id = id;
         this.user = user;
         this.password = password;
         this.name = name;
-        this.paternal_surname = paternal_surname;
-        this.maternal_surname = maternal_surname;
+        this.paternalSurname = paternalSurname;
+        this.maternalSurname = maternalSurname;
         this.email = email;
         this.status = status;
         this.role = role;
@@ -61,6 +60,34 @@ public class User {
         this.canDispatch = canDispatch;
         this.equipmentReview = equipmentReview;
     }
+
+    public void update(UserId id, String user, String password, String name, String paternalSurname, String maternalSurname, String email, String status, Role role, Department department, Place place, String receiveValidation, String receiveCreation, String receiveApproval1, String receiveApproval2, String receiveSalesValidation, String receiveSecuritySale, LocalDateTime creationDate, LocalDateTime editionDate, Integer creatorUserId, Integer editorUserId, Integer areaPlantaId, String canDispatch, String equipmentReview) {
+        this.id = id;
+        this.user = user;
+        this.password = password;
+        this.name = name;
+        this.paternalSurname = paternalSurname;
+        this.maternalSurname = maternalSurname;
+        this.email = email;
+        this.status = status;
+        this.role = role;
+        this.department = department;
+        this.place = place;
+        this.receiveValidation = receiveValidation;
+        this.receiveCreation = receiveCreation;
+        this.receiveApproval1 = receiveApproval1;
+        this.receiveApproval2 = receiveApproval2;
+        this.receiveSalesValidation = receiveSalesValidation;
+        this.receiveSecuritySale = receiveSecuritySale;
+        this.creationDate = creationDate;
+        this.editionDate = editionDate;
+        this.creatorUserId = creatorUserId;
+        this.editorUserId = editorUserId;
+        this.areaPlantaId = areaPlantaId;
+        this.canDispatch = canDispatch;
+        this.equipmentReview = equipmentReview;
+    }
+
 
     public User(String user, String password) {
         this.user = user;
@@ -87,12 +114,12 @@ public class User {
         return name;
     }
 
-    public String getPaternal_surname() {
-        return paternal_surname;
+    public String getPaternalSurname() {
+        return paternalSurname;
     }
 
-    public String getMaternal_surname() {
-        return maternal_surname;
+    public String getMaternalSurname() {
+        return maternalSurname;
     }
 
     public String getEmail() {
@@ -139,11 +166,11 @@ public class User {
         return receiveSecuritySale;
     }
 
-    public LocalDate getCreationDate() {
+    public LocalDateTime getCreationDate() {
         return creationDate;
     }
 
-    public LocalDate getEditionDate() {
+    public LocalDateTime getEditionDate() {
         return editionDate;
     }
 
@@ -165,5 +192,43 @@ public class User {
 
     public String getEquipmentReview() {
         return equipmentReview;
+    }
+
+    public String getPaternalSurnameOrDefault() {
+        return paternalSurname != null ? paternalSurname : "";
+    }
+    public String getMaternalSurnameOrDefault() {
+        return maternalSurname != null ? maternalSurname : "";
+    }
+    public String getEmailOrDefault() {
+        return email != null ? email : "";
+    }
+
+    public Integer getRoleIdOrDefault() {
+        return role != null ? role.getId().getId() : 0;
+    }
+    public Integer getDepartmentIdOrDefault() {
+        return department != null ? department.getId().getId() : 0;
+    }
+    public Integer getPlaceIdOrDefault() {
+        return place != null ? place.getId().getId() : 0;
+    }
+    public String getReceiveValidationOrDefault() {
+        return receiveValidation != null ? receiveValidation : "";
+    }
+    public String getReceiveCreationOrDefault() {
+        return receiveCreation != null ? receiveCreation : "";
+    }
+    public String getReceiveApproval1OrDefault() {
+        return receiveApproval1 != null ? receiveApproval1 : "";
+    }
+    public String getReceiveApproval2OrDefault() {
+        return receiveApproval2 != null ? receiveApproval2 : "";
+    }
+    public String getReceiveSalesValidationOrDefault() {
+        return receiveSalesValidation != null ? receiveSalesValidation : "";
+    }
+    public String getReceiveSecuritySaleOrDefault() {
+        return receiveSecuritySale != null ? receiveSecuritySale : "";
     }
 }

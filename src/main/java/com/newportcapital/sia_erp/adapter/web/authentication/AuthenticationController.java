@@ -2,11 +2,14 @@ package com.newportcapital.sia_erp.adapter.web.authentication;
 
 import com.newportcapital.sia_erp.adapter.web.authentication.dto.LoginRequest;
 import com.newportcapital.sia_erp.adapter.web.authentication.dto.LoginResponse;
-import com.newportcapital.sia_erp.application.usecases.AuthService;
+import com.newportcapital.sia_erp.application.usecases.Auth.AuthService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.web.csrf.InvalidCsrfTokenException;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -23,5 +26,10 @@ public class AuthenticationController {
     @PostMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest) {
         return authService.login(loginRequest);
+    }
+    @PostMapping(value = "/token/refresh")
+    public ResponseEntity<LoginResponse> refreshToken(HttpServletRequest request) {
+
+        return authService.refreshToken(request);
     }
 }

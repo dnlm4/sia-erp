@@ -5,14 +5,15 @@ import jakarta.persistence.Column;
 
 
 public class Company {
-    private final CompanyId companyId;
+    private final CompanyId id;
     private String name;
     private String shortName;
     private String companyName;
     private String originalId;
 
-    public Company(CompanyId companyId, String name, String shortName, String companyName, String originalId) {
-        this.companyId = companyId;
+
+    public Company(CompanyId id, String name, String shortName, String companyName, String originalId) {
+        this.id = id;
         this.name = name;
         this.shortName = shortName;
         this.companyName = companyName;
@@ -20,6 +21,26 @@ public class Company {
     }
 
     public boolean isNew() {
-        return companyId == null;
+        return id == null;
+    }
+
+    public CompanyId getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getShortName() {
+        return shortName;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public String getOriginalId() {
+        return originalId;
     }
 }

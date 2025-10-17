@@ -14,4 +14,16 @@ public class Area {
     public boolean isNew() {
         return id == null;
     }
+
+    public AreaId getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getShortName() {
+        return shortName;
+    }
 }

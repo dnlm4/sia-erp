@@ -1,0 +1,33 @@
+spring:
+  datasource:
+    url: jdbc:sqlserver://${DB_URL}:${DB_PORT};databaseName=${DB_NAME};encrypt=true;trustServerCertificate=true
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  hikari:
+    initialization-fail-timeout: 1
+    minimum-idle: 5
+    maximum-pool-size: 10
+    transaction-isolation: TRANSACTION_READ_COMMITTED
+    auto-commit: false
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+
+security:
+  jwt:
+    secret: ${JWT_SECRET}
+    expiration: ${JWT_EXPIRATION}
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
+    com.zaxxer.hikari: DEBUG
+    org.hibernate.engine.jdbc.connections: DEBUG

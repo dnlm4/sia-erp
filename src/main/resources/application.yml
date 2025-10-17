@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    url: jdbc:sqlserver://172.16.0.110:1433;databaseName=activos_dev_02;encrypt=true;trustServerCertificate=true
+    username: adminbinc
+    password: P0w3r$B12020
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    autocommit: false
+    isolation_level: READ_COMMITTED
+    pool.min_size: 10
+    pool.max_size: 20
+  hikari:
+    initialization-fail-timeout: 1
+    minimum-idle: 5
+    maximum-pool-size: 50
+    transaction-isolation: TRANSACTION_READ_COMMITTED
+    auto-commit: false
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+connection:
+  setAutocommit: false
+
+security:
+  jwt:
+    secret: QwErTyUiOpAsDfGhJkLzXcVbNm123456
+    expiration: 2592000000
+

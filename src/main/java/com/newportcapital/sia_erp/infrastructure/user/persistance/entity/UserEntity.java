@@ -7,7 +7,7 @@ import com.newportcapital.sia_erp.infrastructure.role.RoleEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -33,15 +33,15 @@ public class UserEntity {
     private String email;
     @Column(name = "estado")
     private String status;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "rol_id")
-    private RoleEntity role;
-    @ManyToOne(fetch = FetchType.LAZY)
+    private RoleEntity roleEntity;
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "departamento_id")
-    private DepartmentEntity department;
-    @ManyToOne(fetch = FetchType.LAZY)
+    private DepartmentEntity departmentEntity;
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "sitio_id")
-    private PlaceEntity place;
+    private PlaceEntity placeEntity;
     @Column(name = "recibir_validacion")
     private String receiveValidation;
     @Column(name = "recibir_creacion")
@@ -55,9 +55,9 @@ public class UserEntity {
     @Column(name = "recibir_seguridad_venta")
     private String receiveSecuritySale;
     @Column(name = "fecha_creacion")
-    private LocalDate creationDate;
+    private LocalDateTime creationDate;
     @Column(name = "fecha_edicion")
-    private LocalDate editionDate;
+    private LocalDateTime editionDate;
     @Column(name = "usuario_id_creacion")
     private Integer creatorUserId;
     @Column(name = "usuario_id_edicion")
@@ -80,13 +80,13 @@ public class UserEntity {
     }
 
     public Integer getRoleIdOrDefault() {
-        return role != null ? role.getId() : 0;
+        return roleEntity != null ? roleEntity.getId() : 0;
     }
     public Integer getDepartmentIdOrDefault() {
-        return department != null ? department.getId() : 0;
+        return departmentEntity != null ? departmentEntity.getId() : 0;
     }
     public Integer getPlaceIdOrDefault() {
-        return place != null ? place.getId() : 0;
+        return placeEntity != null ? placeEntity.getId() : 0;
     }
     public String getReceiveValidationOrDefault() {
         return receiveValidation != null ? receiveValidation : "";

@@ -1,7 +1,7 @@
 package com.newportcapital.sia_erp.domain.model.department;
 
+
 import com.newportcapital.sia_erp.domain.model.area.Area;
-import com.newportcapital.sia_erp.infrastructure.area.AreaEntity;
 
 public class Department {
     private final DepartmentId id;
@@ -14,5 +14,21 @@ public class Department {
         this.name = name;
         this.shortName = shortName;
         this.area = area;
+    }
+
+    public DepartmentId getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getShortName() {
+        return shortName;
+    }
+
+    public Area getArea() {
+        return area;
     }
 }

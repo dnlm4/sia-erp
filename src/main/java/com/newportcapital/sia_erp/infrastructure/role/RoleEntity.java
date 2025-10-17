@@ -1,14 +1,15 @@
 package com.newportcapital.sia_erp.infrastructure.role;
 
-import com.newportcapital.sia_erp.domain.model.rol.RoleId;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "rol")
 public class RoleEntity {
@@ -18,8 +19,12 @@ public class RoleEntity {
     @Column(name = "nombre")
     private String name;
     @Column(name = "fecha_creacion")
-    private LocalDate creationDate;
+    private LocalDateTime creationDate;
     @Column(name = "fecha_edicion")
-    private LocalDate editionDate;
+    private LocalDateTime editionDate;
 
+    public RoleEntity(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 }

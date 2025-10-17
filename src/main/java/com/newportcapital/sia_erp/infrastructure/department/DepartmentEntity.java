@@ -2,9 +2,13 @@ package com.newportcapital.sia_erp.infrastructure.department;
 
 import com.newportcapital.sia_erp.infrastructure.area.AreaEntity;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "departamento")
 public class DepartmentEntity {
@@ -15,7 +19,7 @@ public class DepartmentEntity {
     private String name;
     @Column(name = "nombre_corto")
     private String shortName;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "area_id")
     private AreaEntity areaEntity;
 }

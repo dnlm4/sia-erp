@@ -1,0 +1,33 @@
+spring:
+  datasource:
+    url: jdbc:sqlserver://172.16.0.110:1433;databaseName=activos_dev_02;encrypt=true;trustServerCertificate=true
+    username: adminbinc
+    password: P0w3r$B12020
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  hikari:
+    initialization-fail-timeout: 1
+    minimum-idle: 5
+    maximum-pool-size: 10
+    transaction-isolation: TRANSACTION_READ_COMMITTED
+    auto-commit: false
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+
+security:
+  jwt:
+    secret: QwErTyUiOpAsDfGhJkLzXcVbNm
+    expiration: 2592000000
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
+    com.zaxxer.hikari: DEBUG
+    org.hibernate.engine.jdbc.connections: DEBUG

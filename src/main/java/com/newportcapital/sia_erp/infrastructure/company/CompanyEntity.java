@@ -1,12 +1,14 @@
 package com.newportcapital.sia_erp.infrastructure.company;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "empresa")
 public class CompanyEntity {
